@@ -21,6 +21,20 @@ namespace NIF
             return letters[number % 23];
         }
 
+        private String GenerateNifNumber()
+        {
+            String number = "";
+            Random random = new Random();
+
+            for (int i = 0; i < 9; i++)
+            {
+                number += random.Next(0, 9).ToString();
+            }
+
+            return number;
+
+        }
+
         #endregion
     }
 }
