@@ -1,7 +1,7 @@
 namespace Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class NifValidatorTest
     {
         [TestMethod]
         public void TestMethod1()
