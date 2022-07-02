@@ -2,6 +2,13 @@
 {
     public class NifValidator
     {
+        private enum TypeNif
+        {
+            NIF,
+            NIE,
+            CIF
+        }
+
         public NifValidator() { }
 
         #region "Helpers"
