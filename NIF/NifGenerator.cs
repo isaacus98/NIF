@@ -36,5 +36,28 @@ namespace NIF
         }
 
         #endregion
+
+        public String GenerateDNI()
+        {
+            String dni = GenerateNifNumber();
+            dni += CalculateLetter(Convert.ToInt32(dni));
+
+            return dni;
+        }
+
+        public String[] GenerateDNI(int quantity)
+        {
+            String[] dni = new string[quantity];
+            String number;
+
+            for(int i = 0; i < dni.Length; i++)
+            {
+                number = GenerateNifNumber();
+                dni[i] = number + CalculateLetter(Convert.ToInt32(number));
+            }
+
+            return dni;
+
+        }
     }
 }
