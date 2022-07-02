@@ -84,5 +84,77 @@ namespace NIF
         }
 
         #endregion
+
+        public bool Validate(String nif)
+        {
+            TypeNif typeNif;
+            String letter;
+            bool isValid = false;
+
+            if (!String.IsNullOrEmpty(nif))
+            {
+                if (nif.Length == 9)
+                {
+                    nif = nif.ToUpper();
+
+                    typeNif = GetTypeNif(nif);
+
+                    switch (typeNif)
+                    {
+                        //DNI validation
+                        case TypeNif.NIF:
+                            letter = nif.Substring(8);
+
+                            if (letter == CalculateLetter(int.Parse(nif[..8])))
+                            {
+                                isValid = true;
+                            }
+                            else
+                            {
+                                isValid = false;
+                            }
+
+                            break;
+
+                        //NIE validation
+                        case TypeNif.NIE:
+                            letter = nif.Substring(8);
+
+                            if (nif.Substring(0, 1) == "X")
+                            {
+                                nif = nif.Remove(0, 1);
+                                nif = nif.Insert(0, "0");
+                            }
+                            else if (nif.Substring(0, 1) == "Y")
+                            {
+                                nif = nif.Remove(0, 1);
+                                nif = nif.Insert(0, "1");
+                            }
+                            else
+                            {
+                                nif = nif.Remove(0, 1);
+                                nif = nif.Insert(0, "2");
+                            }
+
+                            if (letter == CalculateLetter(int.Parse(nif[..8])))
+                            {
+                                isValid = true;
+                            }
+                            else
+                            {
+                                isValid = false;
+                            }
+                            break;
+
+                        //CIF validation
+                        case TypeNif.CIF:
+                            isValid = ValidateCif(nif);
+                            break;
+                    }
+                }
+            }
+
+            return isValid;
+        }
     }
 }
