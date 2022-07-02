@@ -1,4 +1,7 @@
-﻿namespace NIF
+﻿using NIF.Exceptions;
+using System.Text.RegularExpressions;
+
+namespace NIF
 {
     public class NifValidator
     {
@@ -62,6 +65,22 @@
             }
 
             return isValid;
+        }
+        private TypeNif GetTypeNif(String nif)
+        {
+            //DNI
+            if (Regex.IsMatch(nif, @"[0-9]{8}[A-Z]{1}$"))
+                return TypeNif.NIF;
+
+            //NIE
+            if (Regex.IsMatch(nif, @"[XYZ]{1}[0-9]{7}[A-Z]{1}$"))
+                return TypeNif.NIE;
+
+            //CIF
+            if (Regex.IsMatch(nif, @"[ABCDEFGHJNPQRSUVW]{1}[0-9]{7}[0-9A-Z]{1}$"))
+                return TypeNif.CIF;
+
+            throw new InvalidNifException("The nif is not recognizable");
         }
 
         #endregion
