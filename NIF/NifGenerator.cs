@@ -8,6 +8,12 @@ namespace NIF
 {
     public class NifGenerator
     {
+        private enum TypeNif
+        {
+            NIF,
+            NIE
+        }
+
         public NifGenerator()
         {
 
@@ -21,14 +27,22 @@ namespace NIF
             return letters[number % 23];
         }
 
-        private String GenerateNifNumber()
+        private String GenerateNifNumber(TypeNif nif)
         {
             String number = "";
             Random random = new Random();
 
             for (int i = 0; i < 9; i++)
             {
-                number += random.Next(0, 9).ToString();
+                if (i == 0 && nif == TypeNif.NIE)
+                {
+                    number += random.Next(0, 2).ToString();
+                }
+                else
+                {
+                    number += random.Next(0, 9).ToString();
+                }
+                
             }
 
             return number;
@@ -39,7 +53,7 @@ namespace NIF
 
         public String GenerateDNI()
         {
-            String dni = GenerateNifNumber();
+            String dni = GenerateNifNumber(TypeNif.NIF);
             dni += CalculateLetter(Convert.ToInt32(dni));
 
             return dni;
@@ -52,12 +66,70 @@ namespace NIF
 
             for(int i = 0; i < dni.Length; i++)
             {
-                number = GenerateNifNumber();
+                number = GenerateNifNumber(TypeNif.NIF);
                 dni[i] = number + CalculateLetter(Convert.ToInt32(number));
             }
 
             return dni;
 
+        }
+
+        public String GenerateNIE()
+        {
+            String nie = GenerateNifNumber(TypeNif.NIE);
+            nie += CalculateLetter(Convert.ToInt32(nie));
+
+            //Change first number to letter X,Y,Z 
+            if (nie.Substring(0, 1) == "0")
+            {
+                nie = nie.Remove(0, 1);
+                nie = nie.Insert(0, "X");
+            }
+            else if (nie.Substring(0, 1) == "1")
+            {
+                nie = nie.Remove(0, 1);
+                nie = nie.Insert(0, "Y");
+            }
+            else
+            {
+                nie = nie.Remove(0, 1);
+                nie = nie.Insert(0, "Z");
+            }
+
+            return nie;
+        }
+
+        public String[] GenerateNIE(int quantity)
+        {
+            String[] nie = new String[quantity];
+            String number;
+
+            for (int i = 0; i < nie.Length; i++)
+            {
+                number = GenerateNifNumber(TypeNif.NIE);
+                number += CalculateLetter(Convert.ToInt32(nie));
+
+                //Change first number to letter X,Y,Z 
+                if (number.Substring(0, 1) == "0")
+                {
+                    number = number.Remove(0, 1);
+                    number = number.Insert(0, "X");
+                }
+                else if (number.Substring(0, 1) == "1")
+                {
+                    number = number.Remove(0, 1);
+                    number = number.Insert(0, "Y");
+                }
+                else
+                {
+                    number = number.Remove(0, 1);
+                    number = number.Insert(0, "Z");
+                }
+
+                nie[i] = number;
+            }
+
+            return nie;
         }
     }
 }
