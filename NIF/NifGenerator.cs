@@ -8,16 +8,7 @@ namespace NIF
 {
     public class NifGenerator
     {
-        private enum TypeNif
-        {
-            NIF,
-            NIE
-        }
-
-        public NifGenerator()
-        {
-
-        }
+        public NifGenerator() { }
 
         #region "Helpers"
 
