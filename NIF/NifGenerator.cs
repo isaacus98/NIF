@@ -23,7 +23,7 @@ namespace NIF
             String number = "";
             Random random = new Random();
 
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 8; i++)
             {
                 if (i == 0 && nif == TypeNif.NIE)
                 {
@@ -98,7 +98,7 @@ namespace NIF
             for (int i = 0; i < nie.Length; i++)
             {
                 number = GenerateNifNumber(TypeNif.NIE);
-                number += CalculateLetter(Convert.ToInt32(nie));
+                number += CalculateLetter(Convert.ToInt32(number));
 
                 //Change first number to letter X,Y,Z 
                 if (number.Substring(0, 1) == "0")
