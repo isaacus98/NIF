@@ -68,5 +68,19 @@ namespace Tests
             bool result = validator.Validate(cif);
             Assert.IsTrue(result);
         }
+
+        [TestMethod]
+        public void GenerateMultipleCIFTrue()
+        {
+            NifValidator validator = new NifValidator();
+            NifGenerator generator = new NifGenerator();
+            String[] cif = generator.GenerateNIE(5);
+
+            for (int i = 0; i < cif.Length; i++)
+            {
+                bool result = validator.Validate(cif[i]);
+                Assert.IsTrue(result);
+            }
+        }
     }
 }

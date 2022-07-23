@@ -8,6 +8,12 @@ namespace NIF
 {
     public class NifGenerator
     {
+        private string[] letter = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "J", "N", "P", "Q", "R", "S", "U", "V", "W" };
+        private string[] regionCode = new string[] { "01", "02", "03", "53", "54", "04", "05", "06", "07", "57", "08", "58", "59", "60", "61", "62", "63", "64", "09", "10", "11", "72", "12", "13",
+                                                "14", "56", "15", "70", "16", "17", "55", "18", "19", "20", "71", "21", "22", "23", "24", "25", "26", "27", "28", "78", "79", "80", "81", "82",
+                                                "83", "84", "29", "92", "93", "30", "73", "31", "32", "33", "74", "34", "35", "76", "36", "94", "37", "38", "75", "39", "40", "41", "91", "42",
+                                                "43", "77", "44", "45", "46", "96", "97", "98", "47", "48", "95", "49", "50", "99", "51", "52"};
+
         public NifGenerator() { }
 
         #region "Helpers"
@@ -167,12 +173,6 @@ namespace NIF
         public String GenerateCIF()
         {
             Random random = new Random();
-            //string[] letterDigitControl = new string[] { "J", "A", "B", "C", "D", "E", "F", "G", "H", "I" };
-            string[] letter = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "J", "N", "P", "Q", "R", "S", "U", "V", "W" };
-            string[] regionCode = new string[] { "01", "02", "03", "53", "54", "04", "05", "06", "07", "57", "08", "58", "59", "60", "61", "62", "63", "64", "09", "10", "11", "72", "12", "13",
-                                                "14", "56", "15", "70", "16", "17", "55", "18", "19", "20", "71", "21", "22", "23", "24", "25", "26", "27", "28", "78", "79", "80", "81", "82",
-                                                "83", "84", "29", "92", "93", "30", "73", "31", "32", "33", "74", "34", "35", "76", "36", "94", "37", "38", "75", "39", "40", "41", "91", "42",
-                                                "43", "77", "44", "45", "46", "96", "97", "98", "47", "48", "95", "49", "50", "99", "51", "52"};
             string cif = "";
 
             //Get Random letter
@@ -188,6 +188,33 @@ namespace NIF
             //Get control digit
             cif += CalculateControlDigit(cif);
 
+
+            return cif;
+        }
+
+        public String[] GenerateCIF(int quantity)
+        {
+            Random random = new Random();
+            String[] cif = new String[quantity];
+            string number = "";
+
+            for (int i = 0; i < quantity; i++)
+            {
+                //Get Random letter
+                number += letter[random.Next(0, letter.Length)];
+                //Get random region code
+                number += regionCode[random.Next(0, regionCode.Length)];
+
+                //Generate 5 random numbers from 0 to 9
+                for (int j = 0; i < 5; i++)
+                    number += random.Next(0, 9).ToString();
+
+
+                //Get control digit
+                number += CalculateControlDigit(number);
+
+                cif[i] = number;
+            }
 
             return cif;
         }
