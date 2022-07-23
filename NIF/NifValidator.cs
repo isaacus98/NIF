@@ -18,6 +18,7 @@ namespace NIF
         private bool ValidateCif(string cif)
         {
             bool isValid;
+            string letterCif;
             string number;
             string xxx;
             int addition;
@@ -27,6 +28,7 @@ namespace NIF
             int oddNumber = 0;
             string[] letter = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "J", "N", "P", "Q", "R", "S", "U", "V", "W" };
 
+            letterCif = cif.Substring(0, 1);
             number = cif.Substring(8, 1);
 
             for (counter = 1; counter < 7; counter++)
@@ -48,13 +50,27 @@ namespace NIF
                 controlDigit = 0;
 
 
-            if ((number == controlDigit.ToString()) || (number == letter[controlDigit - 1]))
+            if (letterCif == "P" || letterCif == "Q" || letterCif == "R" || letterCif == "S" || letterCif == "W" || letterCif == "N")
             {
-                isValid = true;
+                if (number == letter[controlDigit - 1])
+                {
+                    isValid = true;
+                }
+                else
+                {
+                    isValid = false;
+                }
             }
             else
             {
-                isValid = false;
+                if (number == controlDigit.ToString())
+                {
+                    isValid = true;
+                }
+                else
+                {
+                    isValid = false;
+                }
             }
 
             return isValid;
