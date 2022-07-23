@@ -58,5 +58,15 @@ namespace Tests
                 Assert.IsTrue(result);
             }
         }
+
+        [TestMethod]
+        public void GenerateCIFTrue()
+        {
+            NifValidator validator = new NifValidator();
+            NifGenerator generator = new NifGenerator();
+            String cif = generator.GenerateCIF();
+            bool result = validator.Validate(cif);
+            Assert.IsTrue(result);
+        }
     }
 }
