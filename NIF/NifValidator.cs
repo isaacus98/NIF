@@ -61,9 +61,20 @@ namespace NIF
                     isValid = false;
                 }
             }
-            else
+            else if (letterCif == "P" || letterCif == "Q" || letterCif == "R" || letterCif == "S")
             {
                 if (number == controlDigit.ToString())
+                {
+                    isValid = true;
+                }
+                else
+                {
+                    isValid = false;
+                }
+            }
+            else
+            {
+                if (number == letter[controlDigit - 1] || number == controlDigit.ToString())
                 {
                     isValid = true;
                 }
