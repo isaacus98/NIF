@@ -41,7 +41,7 @@ namespace Tests
         public void ValidateCIFTestTrue()
         {
             NifValidator validator = new NifValidator();
-            bool result = validator.Validate("F86988169");
+            bool result = validator.Validate("P9508997E");
             Assert.IsTrue(result);
         }
 
