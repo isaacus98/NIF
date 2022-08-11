@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -12,7 +12,7 @@
     <PackageProjectUrl>https://github.com/isaacus98/NIF</PackageProjectUrl>
     <Description> .NET 6 library to validate the Spanish NIF</Description>
     <Company>Isaac Morcillo Garcia</Company>
-    <Authors>Isaac Morcillo Garica</Authors>
+    <Authors>Isaac Morcillo Garcia</Authors>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
