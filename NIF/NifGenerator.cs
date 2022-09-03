@@ -89,6 +89,10 @@ namespace NIF
 
         #endregion
 
+        /// <summary>
+        ///     Generates a random DNI
+        /// </summary>
+        /// <returns>A string containing the DNI</returns>
         public String GenerateDNI()
         {
             String dni = GenerateNifNumber(TypeNif.NIF);
@@ -97,6 +101,11 @@ namespace NIF
             return dni;
         }
 
+        /// <summary>
+        ///     Generates an array of strings that are randomly generated DNI
+        /// </summary>
+        /// <param name="quantity"></param>
+        /// <returns>An array of strings that continues random DNI</returns>
         public String[] GenerateDNI(int quantity)
         {
             String[] dni = new string[quantity];
@@ -112,6 +121,10 @@ namespace NIF
 
         }
 
+        /// <summary>
+        ///     Generates a random NIE
+        /// </summary>
+        /// <returns>A string containing the NIE</returns>
         public String GenerateNIE()
         {
             String nie = GenerateNifNumber(TypeNif.NIE);
@@ -137,6 +150,11 @@ namespace NIF
             return nie;
         }
 
+        /// <summary>
+        ///     Generates an array of strings that are randomly generated NIE
+        /// </summary>
+        /// <param name="quantity"></param>
+        /// <returns>An array of strings that continues random NIE</returns>
         public String[] GenerateNIE(int quantity)
         {
             String[] nie = new String[quantity];
@@ -170,6 +188,10 @@ namespace NIF
             return nie;
         }
 
+        /// <summary>
+        ///     Generates a random CIF
+        /// </summary>
+        /// <returns>A string containing the CIF</returns>
         public String GenerateCIF()
         {
             Random random = new Random();
@@ -192,6 +214,11 @@ namespace NIF
             return cif;
         }
 
+        /// <summary>
+        ///     Generates an array of strings that are randomly generated CIF
+        /// </summary>
+        /// <param name="quantity"></param>
+        /// <returns>An array of strings that continues random NIE</returns>
         public String[] GenerateCIF(int quantity)
         {
             Random random = new Random();

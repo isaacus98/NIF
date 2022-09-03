@@ -124,6 +124,11 @@ namespace NIF
 
         #endregion
 
+        /// <summary>
+        ///     Validates if a DNI/NIE/CIF is correct.
+        /// </summary>
+        /// <param name="nif"></param>
+        /// <returns>A Boolean depending on if the DNI/NIE/CIF is correct</returns>
         public bool Validate(String nif)
         {
             TypeNif typeNif;

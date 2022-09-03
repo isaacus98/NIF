@@ -14,6 +14,7 @@
     <Company>Isaac Morcillo Garcia</Company>
     <Authors>Isaac Morcillo Garcia</Authors>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
