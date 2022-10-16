@@ -33,11 +33,11 @@ namespace NIF
             {
                 if (i == 0 && nif == TypeNif.NIE)
                 {
-                    number += random.Next(0, 2).ToString();
+                    number += random.Next(0, 3).ToString();
                 }
                 else
                 {
-                    number += random.Next(0, 9).ToString();
+                    number += random.Next(0, 10).ToString();
                 }
                 
             }
@@ -204,7 +204,7 @@ namespace NIF
 
             //Generate 5 random numbers from 0 to 9
             for (int i = 0; i < 5; i++)
-                cif += random.Next(0, 9).ToString();
+                cif += random.Next(0, 10).ToString();
 
 
             //Get control digit
@@ -233,8 +233,8 @@ namespace NIF
                 number += regionCode[random.Next(0, regionCode.Length)];
 
                 //Generate 5 random numbers from 0 to 9
-                for (int j = 0; i < 5; i++)
-                    number += random.Next(0, 9).ToString();
+                for (int j = 0; j < 5; i++)
+                    number += random.Next(0, 10).ToString();
 
 
                 //Get control digit

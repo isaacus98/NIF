@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NIF\NIF.csproj" />
+    <ProjectReference Include="..\..\src\NIF\NIF.csproj" />
   </ItemGroup>
 
 </Project>
