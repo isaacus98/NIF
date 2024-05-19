@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
@@ -10,11 +10,11 @@
     <RepositoryUrl>https://github.com/isaacus98/NIF</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageProjectUrl>https://github.com/isaacus98/NIF</PackageProjectUrl>
-    <Description> .NET 6 library to validate the Spanish NIF</Description>
+    <Description> .NET 8 library to validate the Spanish NIF</Description>
     <Company>Isaac Morcillo Garcia</Company>
     <Authors>Isaac Morcillo Garcia</Authors>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.1.0</Version>
+    <Version>2.0.0</Version>
     <Title>NIF</Title>
   </PropertyGroup>
 
