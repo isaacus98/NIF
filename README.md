@@ -4,11 +4,9 @@ NIF is a .NET 6 library to validate the Spanish NIF. This library allows to vali
 [![NuGet](https://img.shields.io/nuget/v/NIF)](https://www.nuget.org/packages/NIF)
 ## Example to validate DNI,NIE or CIF
 ```csharp
-NifValidator validator = new NifValidator();
-bool result = validator.Validate("32700667A");
+bool result = NifValidator.Validate("32700667A");
 ```
 ## Example to generate DNI
 ```csharp
-NifGenerator generator = new NifGenerator();
-String dni = generator.GenerateDNI();
+String dni = NifGenerator.GenerateDNI();
 ```
