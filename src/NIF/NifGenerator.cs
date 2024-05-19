@@ -6,25 +6,23 @@ using System.Threading.Tasks;
 
 namespace NIF
 {
-    public class NifGenerator
+    public static class NifGenerator
     {
-        private string[] letter = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "J", "N", "P", "Q", "R", "S", "U", "V", "W" };
-        private string[] regionCode = new string[] { "01", "02", "03", "53", "54", "04", "05", "06", "07", "57", "08", "58", "59", "60", "61", "62", "63", "64", "09", "10", "11", "72", "12", "13",
+        private static string[] Letter = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "J", "N", "P", "Q", "R", "S", "U", "V", "W" };
+        private static string[] RegionCode = new string[] { "01", "02", "03", "53", "54", "04", "05", "06", "07", "57", "08", "58", "59", "60", "61", "62", "63", "64", "09", "10", "11", "72", "12", "13",
                                                 "14", "56", "15", "70", "16", "17", "55", "18", "19", "20", "71", "21", "22", "23", "24", "25", "26", "27", "28", "78", "79", "80", "81", "82",
                                                 "83", "84", "29", "92", "93", "30", "73", "31", "32", "33", "74", "34", "35", "76", "36", "94", "37", "38", "75", "39", "40", "41", "91", "42",
                                                 "43", "77", "44", "45", "46", "96", "97", "98", "47", "48", "95", "49", "50", "99", "51", "52"};
 
-        public NifGenerator() { }
-
         #region "Helpers"
 
-        private String CalculateLetter(int number)
+        private static String CalculateLetter(int number)
         {
             String[] letters = new string[] { "T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E" };
             return letters[number % 23];
         }
 
-        private String GenerateNifNumber(TypeNif nif)
+        private static String GenerateNifNumber(TypeNif nif)
         {
             String number = "";
             Random random = new Random();
@@ -32,21 +30,15 @@ namespace NIF
             for (int i = 0; i < 8; i++)
             {
                 if (i == 0 && nif == TypeNif.NIE)
-                {
                     number += random.Next(0, 3).ToString();
-                }
                 else
-                {
                     number += random.Next(0, 10).ToString();
-                }
-                
             }
 
             return number;
-
         }
 
-        private String CalculateControlDigit(String cif)
+        private static String CalculateControlDigit(String cif)
         {
             string letterCif;
             string xxx;
@@ -78,13 +70,9 @@ namespace NIF
                 controlDigit = 0;
 
             if (letterCif == "P" || letterCif == "Q" || letterCif == "R" || letterCif == "S" || letterCif == "W" || letterCif == "N")
-            {
                 return letter[controlDigit - 1];
-            }
             else
-            {
                 return controlDigit.ToString();
-            }
         }
 
         #endregion
@@ -93,7 +81,7 @@ namespace NIF
         ///     Generates a random DNI
         /// </summary>
         /// <returns>A string containing the DNI</returns>
-        public String GenerateDNI()
+        public static String GenerateDNI()
         {
             String dni = GenerateNifNumber(TypeNif.NIF);
             dni += CalculateLetter(Convert.ToInt32(dni));
@@ -106,7 +94,7 @@ namespace NIF
         /// </summary>
         /// <param name="quantity"></param>
         /// <returns>An array of strings that continues random DNI</returns>
-        public String[] GenerateDNI(int quantity)
+        public static String[] GenerateDNI(int quantity)
         {
             String[] dni = new string[quantity];
             String number;
@@ -118,14 +106,13 @@ namespace NIF
             }
 
             return dni;
-
         }
 
         /// <summary>
         ///     Generates a random NIE
         /// </summary>
         /// <returns>A string containing the NIE</returns>
-        public String GenerateNIE()
+        public static String GenerateNIE()
         {
             String nie = GenerateNifNumber(TypeNif.NIE);
             nie += CalculateLetter(Convert.ToInt32(nie));
@@ -155,7 +142,7 @@ namespace NIF
         /// </summary>
         /// <param name="quantity"></param>
         /// <returns>An array of strings that continues random NIE</returns>
-        public String[] GenerateNIE(int quantity)
+        public static String[] GenerateNIE(int quantity)
         {
             String[] nie = new String[quantity];
             String number;
@@ -192,24 +179,22 @@ namespace NIF
         ///     Generates a random CIF
         /// </summary>
         /// <returns>A string containing the CIF</returns>
-        public String GenerateCIF()
+        public static String GenerateCIF()
         {
             Random random = new Random();
             string cif = "";
 
             //Get Random letter
-            cif += letter[random.Next(0, letter.Length)];
+            cif += Letter[random.Next(0, Letter.Length)];
             //Get random region code
-            cif += regionCode[random.Next(0, regionCode.Length)];
+            cif += RegionCode[random.Next(0, RegionCode.Length)];
 
             //Generate 5 random numbers from 0 to 9
             for (int i = 0; i < 5; i++)
                 cif += random.Next(0, 10).ToString();
 
-
             //Get control digit
             cif += CalculateControlDigit(cif);
-
 
             return cif;
         }
@@ -219,7 +204,7 @@ namespace NIF
         /// </summary>
         /// <param name="quantity"></param>
         /// <returns>An array of strings that continues random NIE</returns>
-        public String[] GenerateCIF(int quantity)
+        public static String[] GenerateCIF(int quantity)
         {
             Random random = new Random();
             String[] cif = new String[quantity];
@@ -228,14 +213,13 @@ namespace NIF
             for (int i = 0; i < quantity; i++)
             {
                 //Get Random letter
-                number += letter[random.Next(0, letter.Length)];
+                number += Letter[random.Next(0, Letter.Length)];
                 //Get random region code
-                number += regionCode[random.Next(0, regionCode.Length)];
+                number += RegionCode[random.Next(0, RegionCode.Length)];
 
                 //Generate 5 random numbers from 0 to 9
                 for (int j = 0; j < 5; i++)
                     number += random.Next(0, 10).ToString();
-
 
                 //Get control digit
                 number += CalculateControlDigit(number);
