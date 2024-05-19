@@ -8,48 +8,42 @@ namespace Tests
         [TestMethod]
         public void ValidateNIFTestTrue()
         {
-            NifValidator validator = new NifValidator();
-            bool result = validator.Validate("32700667A");
+            bool result = NifValidator.Validate("32700667A");
             Assert.IsTrue(result);
         }
 
         [TestMethod]
         public void ValidateNIFTestFalse()
         {
-            NifValidator validator = new NifValidator();
-            bool result = validator.Validate("32700667B");
+            bool result = NifValidator.Validate("32700667B");
             Assert.IsFalse(result);
         }
 
         [TestMethod]
         public void ValidateNIETestTrue()
         {
-            NifValidator validator = new NifValidator();
-            bool result = validator.Validate("Y2910565K");
+            bool result = NifValidator.Validate("Y2910565K");
             Assert.IsTrue(result);
         }
 
         [TestMethod]
         public void ValidateNIETestFalse()
         {
-            NifValidator validator = new NifValidator();
-            bool result = validator.Validate("Y2910565Q");
+            bool result = NifValidator.Validate("Y2910565Q");
             Assert.IsFalse(result);
         }
 
         [TestMethod]
         public void ValidateCIFTestTrue()
         {
-            NifValidator validator = new NifValidator();
-            bool result = validator.Validate("P9508997E");
+            bool result = NifValidator.Validate("P9508997E");
             Assert.IsTrue(result);
         }
 
         [TestMethod]
         public void ValidateCIFTestFalse()
         {
-            NifValidator validator = new NifValidator();
-            bool result = validator.Validate("Q21109526");
+            bool result = NifValidator.Validate("Q21109526");
             Assert.IsFalse(result);
         }
     }
