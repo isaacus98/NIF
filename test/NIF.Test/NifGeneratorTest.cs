@@ -13,23 +13,19 @@ namespace Tests
         [TestMethod]
         public void GenerateDNITrue()
         {
-            NifValidator validator = new NifValidator();
-            NifGenerator generator = new NifGenerator();
-            String dni = generator.GenerateDNI();
-            bool result = validator.Validate(dni);
+            String dni = NifGenerator.GenerateDNI();
+            bool result = NifValidator.Validate(dni);
             Assert.IsTrue(result);
         }
 
         [TestMethod]
         public void GenerateMultipleDNITrue()
         {
-            NifValidator validator = new NifValidator();
-            NifGenerator generator = new NifGenerator();
-            String[] dni = generator.GenerateDNI(5);
+            String[] dni = NifGenerator.GenerateDNI(5);
 
             for (int i = 0; i < dni.Length; i++)
             {
-                bool result = validator.Validate(dni[i]);
+                bool result = NifValidator.Validate(dni[i]);
                 Assert.IsTrue(result);
             }
             
@@ -38,23 +34,19 @@ namespace Tests
         [TestMethod]
         public void GenerateNIETrue()
         {
-            NifValidator validator = new NifValidator();
-            NifGenerator generator = new NifGenerator();
-            String nie = generator.GenerateNIE();
-            bool result = validator.Validate(nie);
+            String nie = NifGenerator.GenerateNIE();
+            bool result = NifValidator.Validate(nie);
             Assert.IsTrue(result);
         }
 
         [TestMethod]
         public void GenerateMultipleNIETrue()
         {
-            NifValidator validator = new NifValidator();
-            NifGenerator generator = new NifGenerator();
-            String[] nie = generator.GenerateNIE(5);
+            String[] nie = NifGenerator.GenerateNIE(5);
 
             for (int i = 0; i < nie.Length; i++)
             {
-                bool result = validator.Validate(nie[i]);
+                bool result = NifValidator.Validate(nie[i]);
                 Assert.IsTrue(result);
             }
         }
@@ -62,23 +54,19 @@ namespace Tests
         [TestMethod]
         public void GenerateCIFTrue()
         {
-            NifValidator validator = new NifValidator();
-            NifGenerator generator = new NifGenerator();
-            String cif = generator.GenerateCIF();
-            bool result = validator.Validate(cif);
+            String cif = NifGenerator.GenerateCIF();
+            bool result = NifValidator.Validate(cif);
             Assert.IsTrue(result);
         }
 
         [TestMethod]
         public void GenerateMultipleCIFTrue()
         {
-            NifValidator validator = new NifValidator();
-            NifGenerator generator = new NifGenerator();
-            String[] cif = generator.GenerateNIE(5);
+            String[] cif = NifGenerator.GenerateNIE(5);
 
             for (int i = 0; i < cif.Length; i++)
             {
-                bool result = validator.Validate(cif[i]);
+                bool result = NifValidator.Validate(cif[i]);
                 Assert.IsTrue(result);
             }
         }
