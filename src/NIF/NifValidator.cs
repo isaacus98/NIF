@@ -3,19 +3,17 @@ using System.Text.RegularExpressions;
 
 namespace NIF
 {
-    public class NifValidator
+    public static class NifValidator
     {
-        public NifValidator() { }
-
         #region "Helpers"
 
-        private String CalculateLetter(int number)
+        private static String CalculateLetter(int number)
         {
             String[] letters = new string[] { "T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E" };
             return letters[number % 23];
         }
 
-        private bool ValidateCif(string cif)
+        private static bool ValidateCif(string cif)
         {
             bool isValid = false;
             bool regionCodeIsValid = false;
@@ -105,7 +103,7 @@ namespace NIF
 
             return isValid;
         }
-        private TypeNif GetTypeNif(String nif)
+        private static TypeNif GetTypeNif(String nif)
         {
             //DNI
             if (Regex.IsMatch(nif, @"[0-9]{8}[A-Z]{1}$"))
@@ -119,7 +117,7 @@ namespace NIF
             if (Regex.IsMatch(nif, @"[ABCDEFGHJNPQRSUVW]{1}[0-9]{7}[0-9A-Z]{1}$"))
                 return TypeNif.CIF;
 
-            throw new InvalidNifException("The nif is not recognizable");
+            throw new InvalidNifException("The NIF is not recognizable");
         }
 
         #endregion
@@ -129,7 +127,7 @@ namespace NIF
         /// </summary>
         /// <param name="nif"></param>
         /// <returns>A Boolean depending on if the DNI/NIE/CIF is correct</returns>
-        public bool Validate(String nif)
+        public static bool Validate(String nif)
         {
             TypeNif typeNif;
             String letter;
@@ -140,7 +138,6 @@ namespace NIF
                 if (nif.Length == 9)
                 {
                     nif = nif.ToUpper();
-
                     typeNif = GetTypeNif(nif);
 
                     switch (typeNif)
@@ -150,13 +147,9 @@ namespace NIF
                             letter = nif.Substring(8);
 
                             if (letter == CalculateLetter(int.Parse(nif[..8])))
-                            {
                                 isValid = true;
-                            }
                             else
-                            {
                                 isValid = false;
-                            }
 
                             break;
 
@@ -181,13 +174,9 @@ namespace NIF
                             }
 
                             if (letter == CalculateLetter(int.Parse(nif[..8])))
-                            {
                                 isValid = true;
-                            }
                             else
-                            {
                                 isValid = false;
-                            }
                             break;
 
                         //CIF validation
