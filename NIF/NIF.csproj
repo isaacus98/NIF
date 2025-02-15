@@ -13,6 +13,7 @@
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/isaacus98/NIF</RepositoryUrl>
+    <PackageId>Spanish.NIF</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
